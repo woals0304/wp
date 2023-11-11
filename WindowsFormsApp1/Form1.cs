@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -158,6 +159,19 @@ namespace WindowsFormsApp1
                 listView1.Items.Add(item); // 삭제된 항목을 다시 ListView에 추가
             }
             deletedItems.Clear(); // 삭제된 항목을 삭제합니다.
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e) // 하이퍼링크 실험중
+        {
+            foreach(ListViewItem item in listView1.SelectedItems)
+            {
+                ListViewItem.ListViewSubItemCollection subItem = item.SubItems;
+                
+                if(MessageBox.Show("'" + subItem[0].Text +"'"+ " 네이버에 검색", subItem[0].Text + " 링크", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                {
+                    Process.Start("https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=" + subItem[0].Text);
+                }
+            }
         }
     }
     }
