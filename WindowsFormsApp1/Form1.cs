@@ -59,30 +59,24 @@ namespace WindowsFormsApp1
                 MessageBox.Show("음식 종류를 입력해 주세요.");
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            string nameToSearch = textBox1.Text; // 검색할 이름
-            string newName = textBox2.Text; // 새로운 이름
-            string newPhone = textBox3.Text; // 새로운 전화번호
-            string newAddress = textBox4.Text; // 새로운 주소
-            string newType = textBox5.Text; // 새로운 종류
-
-
-            // 예시: ListView에서 검색한 이름과 일치하는 항목을 찾고 수정
-            foreach (ListViewItem item in listView1.Items)
+            if (listView1.SelectedItems.Count == 0)
             {
-                if (item.SubItems[0].Text == nameToSearch)
-                {
-                    item.SubItems[0].Text = newName;
-                    item.SubItems[1].Text = newPhone;
-                    item.SubItems[2].Text = newAddress;
-                    item.SubItems[3].Text = newType;
-                }
+                MessageBox.Show("수정할 항목을 선택해 주세요.");
+                return;
             }
 
+            ListViewItem selectedItem = listView1.SelectedItems[0];
+            selectedItem.SubItems[0].Text = textBox1.Text;
+            selectedItem.SubItems[1].Text = textBox2.Text;
+            selectedItem.SubItems[2].Text = textBox3.Text;
+            selectedItem.SubItems[3].Text = textBox4.Text;
+            selectedItem.SubItems[4].Text = textBox5.Text;
 
-            // 수정이 성공하면 사용자에게 메시지를 표시합니다.
+            // 입력 필드를 지웁니다
+            ClearTextBoxes();
+
             MessageBox.Show("정보가 변경되었습니다.");
         }
 
@@ -90,16 +84,26 @@ namespace WindowsFormsApp1
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                // ListView에서 선택한 항목의 정보를 가져와서 다른 텍스트 상자에 표시
                 ListViewItem selectedItem = listView1.SelectedItems[0];
-                textBox1.Text = selectedItem.SubItems[0].Text; // 가게 이름
-                textBox2.Text = selectedItem.SubItems[1].Text; // 전화번호
-                textBox3.Text = selectedItem.SubItems[2].Text; // 주소
-                textBox4.Text = selectedItem.SubItems[3].Text; // 음식 종류
-                textBox5.Text = selectedItem.SubItems[4].Text; // 메모
+                textBox1.Text = selectedItem.SubItems[0].Text;
+                textBox2.Text = selectedItem.SubItems[1].Text;
+                textBox3.Text = selectedItem.SubItems[2].Text;
+                textBox4.Text = selectedItem.SubItems[3].Text;
+                textBox5.Text = selectedItem.SubItems[4].Text;
             }
         }
 
+        private void ClearTextBoxes()
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+        }
+    }
+}
+       
         private void button3_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("선택하신 항목이 삭제됩니다.\r계속 하시겠습니다?", "항목 삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
