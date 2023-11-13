@@ -166,7 +166,7 @@ namespace WindowsFormsApp1
                 listView1.Items.Add(item); // 삭제된 항목을 다시 ListView에 추가
             }
             deletedItems.Clear(); // 삭제된 항목을 삭제합니다.
-        }
+        }// 푸쉬 테스트
 
         private void listView1_DoubleClick(object sender, EventArgs e) // 하이퍼링크 실험중(가게이름 더블클릭)
         {
