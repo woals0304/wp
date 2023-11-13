@@ -41,22 +41,26 @@ namespace WindowsFormsApp1
                 textBox5.Text = "";
             }
             // 가게 이름, 전화번호, 주소, 음식 종류중 미입력 정보가 있으면 메세지박스 띄움.
-            // + 추가할만한 기능 = 메세지박스 확인후 키보드 포커스 설정
+            // 메세지박스 확인후 키보드 포커스 설정
             else if (textBox1.Text == "")
             {
-                MessageBox.Show("가게 이름을 입력해 주세요.");
+                if(MessageBox.Show("가게 이름을 입력해 주세요.", "error")==DialogResult.OK)
+                    textBox1.Focus();
             }
             else if (textBox2.Text == "")
             {
-                MessageBox.Show("전화번호를 입력해 주세요.");
+                if(MessageBox.Show("전화번호를 입력해 주세요.", "error")==DialogResult.OK)
+                    textBox2.Focus();
             }
             else if (textBox3.Text == "")
             {
-                MessageBox.Show("주소를 입력해 주세요.");
+                if(MessageBox.Show("주소를 입력해 주세요.", "error")== DialogResult.OK)
+                    textBox3.Focus();
             }
             else if (textBox4.Text == "")
             {
-                MessageBox.Show("음식 종류를 입력해 주세요.");
+                if(MessageBox.Show("음식 종류를 입력해 주세요.", "error")==DialogResult.OK)
+                    textBox4.Focus();
             }
         }
 
