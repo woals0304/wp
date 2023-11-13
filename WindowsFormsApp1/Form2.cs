@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
 
         private void bt_OK()
         {
-            if (textBox1.Text.Equals("윈도우프로그래밍2조") && textBox2.Text.Equals("1234"))
+            if (textBox1.Text.Equals("wp2") && textBox2.Text.Equals("1234"))
             {
                 _Form1.LoginCheck = true;
                 this.Close();

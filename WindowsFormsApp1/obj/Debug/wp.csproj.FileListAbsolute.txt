@@ -1,28 +1,6 @@
-<<<<<<< HEAD
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\obj\Debug\wp.csproj.AssemblyReference.cache
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\obj\Debug\wp.csproj.SuggestedBindingRedirects.cache
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\obj\Debug\wp.csproj.GenerateResource.cache
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\obj\Debug\wp.csproj.CoreCompileInputs.cache
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
-C:\Users\user\Downloads\wp-master\dd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
-=======
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\obj\Debug\wp.csproj.AssemblyReference.cache
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\obj\Debug\wp.csproj.GenerateResource.cache
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\obj\Debug\wp.csproj.CoreCompileInputs.cache
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
-C:\Users\pc\Source\Repos\wp\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
->>>>>>> origin/feature/infologin
+C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
 C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\obj\Debug\wp.csproj.AssemblyReference.cache
 C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
@@ -31,6 +9,3 @@ C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\Window
 C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\obj\Debug\wp.csproj.CoreCompileInputs.cache
 C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
-C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
-C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
-C:\Users\Veny\Desktop\수업 관련 자료\윈도우 프로그래밍\team\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
