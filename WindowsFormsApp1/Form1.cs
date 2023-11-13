@@ -177,7 +177,7 @@ namespace WindowsFormsApp1
                 // 메세지박스 YES == 네이버에 해당 가게이름 검색
                 if(MessageBox.Show("'" + subItem[0].Text +"'"+ " 네이버에 검색", subItem[0].Text + " 링크", MessageBoxButtons.YesNo)==DialogResult.Yes)
                 {
-                    Process.Start("https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=" + subItem[0].Text);
+                    Process.Start("https://map.naver.com/p/search/" + subItem[0].Text);
                 }
             }
         }
