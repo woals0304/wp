@@ -38,26 +38,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 45);
+            this.label1.Location = new System.Drawing.Point(63, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 12);
+            this.label1.Size = new System.Drawing.Size(22, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 133);
+            this.label2.Location = new System.Drawing.Point(53, 200);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 12);
+            this.label2.Size = new System.Drawing.Size(34, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "PW";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(66, 42);
+            this.textBox1.Location = new System.Drawing.Point(94, 63);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(241, 21);
+            this.textBox1.Size = new System.Drawing.Size(343, 28);
             this.textBox1.TabIndex = 2;
             this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
@@ -66,9 +69,11 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(66, 130);
+            this.textBox2.Location = new System.Drawing.Point(94, 195);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(241, 21);
+            this.textBox2.PasswordChar = '*';
+            this.textBox2.Size = new System.Drawing.Size(343, 28);
             this.textBox2.TabIndex = 3;
             this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
             this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
@@ -77,9 +82,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(149, 213);
+            this.button1.Location = new System.Drawing.Point(213, 320);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(107, 34);
             this.button1.TabIndex = 4;
             this.button1.Text = "확인";
             this.button1.UseVisualStyleBackColor = true;
@@ -87,16 +93,18 @@
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 348);
+            this.ClientSize = new System.Drawing.Size(574, 522);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -177,27 +177,28 @@ namespace WindowsFormsApp1
             deletedItems.Clear(); // 삭제된 항목을 삭제합니다.
         }
 
-<<<<<<< HEAD
+
         private void listView1_DoubleClick(object sender, EventArgs e) // 하이퍼링크 실험중(가게이름 더블클릭)
         {
-            foreach(ListViewItem item in listView1.SelectedItems)
+            foreach (ListViewItem item in listView1.SelectedItems)
             {
                 ListViewItem.ListViewSubItemCollection subItem = item.SubItems; // 리스트뷰 가게이름 가져오기
-                
+
                 // 메세지박스 YES == 네이버에 해당 가게이름 검색
-                if(MessageBox.Show("'" + subItem[0].Text +"'"+ " 네이버에 검색", subItem[0].Text + " 링크", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                if (MessageBox.Show("'" + subItem[0].Text + "'" + " 네이버에 검색", subItem[0].Text + " 링크", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Process.Start("https://map.naver.com/p/search/" + subItem[0].Text);
                 }
             }
-=======
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Form2 _Form = new Form2(this);
             _Form.ShowDialog();
 
             if (!m_blLoginCheck) this.Close();
->>>>>>> origin/feature/infologin
+
         }
     }
     }

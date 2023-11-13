@@ -112,5 +112,10 @@ namespace WindowsFormsApp1
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
                 e.SuppressKeyPress = true;
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
