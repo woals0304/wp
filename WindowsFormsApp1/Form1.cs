@@ -14,9 +14,18 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+
+        private Boolean m_blLoginCheck = false;
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public Boolean LoginCheck
+        {
+            get { return m_blLoginCheck; }
+            set { m_blLoginCheck = value; }
         }
 
         private void button1_Click(object sender, EventArgs e) // 정보저장 버튼 클릭시 발생하는 이벤트.
@@ -168,6 +177,7 @@ namespace WindowsFormsApp1
             deletedItems.Clear(); // 삭제된 항목을 삭제합니다.
         }
 
+<<<<<<< HEAD
         private void listView1_DoubleClick(object sender, EventArgs e) // 하이퍼링크 실험중(가게이름 더블클릭)
         {
             foreach(ListViewItem item in listView1.SelectedItems)
@@ -180,6 +190,14 @@ namespace WindowsFormsApp1
                     Process.Start("https://map.naver.com/p/search/" + subItem[0].Text);
                 }
             }
+=======
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Form2 _Form = new Form2(this);
+            _Form.ShowDialog();
+
+            if (!m_blLoginCheck) this.Close();
+>>>>>>> origin/feature/infologin
         }
     }
     }

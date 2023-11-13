@@ -237,13 +237,20 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
+<<<<<<< HEAD
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
+=======
+>>>>>>> origin/feature/infologin
             this.listView1.Location = new System.Drawing.Point(305, 66);
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView1.Name = "listView1";
             this.listView1.RightToLeftLayout = true;
+<<<<<<< HEAD
             this.listView1.Size = new System.Drawing.Size(446, 272);
+=======
+            this.listView1.Size = new System.Drawing.Size(362, 272);
+>>>>>>> origin/feature/infologin
             this.listView1.TabIndex = 19;
             this.listView1.TileSize = new System.Drawing.Size(300, 30);
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -319,6 +326,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
