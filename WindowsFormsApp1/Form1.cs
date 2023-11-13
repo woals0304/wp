@@ -106,8 +106,7 @@ namespace WindowsFormsApp1
             textBox4.Clear();
             textBox5.Clear();
         }
-    }
-}
+
        
         private void button3_Click(object sender, EventArgs e)
         {
