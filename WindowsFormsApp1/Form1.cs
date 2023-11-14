@@ -54,22 +54,22 @@ namespace WindowsFormsApp1
             // 메세지박스 확인후 키보드 포커스 설정
             else if (textBox1.Text == "")
             {
-                if(MessageBox.Show("가게 이름을 입력해 주세요.", "error")==DialogResult.OK)
+                if (MessageBox.Show("가게 이름을 입력해 주세요.", "error") == DialogResult.OK)
                     textBox1.Focus();
             }
             else if (textBox2.Text == "")
             {
-                if(MessageBox.Show("전화번호를 입력해 주세요.", "error")==DialogResult.OK)
+                if (MessageBox.Show("전화번호를 입력해 주세요.", "error") == DialogResult.OK)
                     textBox2.Focus();
             }
             else if (textBox3.Text == "")
             {
-                if(MessageBox.Show("주소를 입력해 주세요.", "error")== DialogResult.OK)
+                if (MessageBox.Show("주소를 입력해 주세요.", "error") == DialogResult.OK)
                     textBox3.Focus();
             }
             else if (textBox4.Text == "")
             {
-                if(MessageBox.Show("음식 종류를 입력해 주세요.", "error")==DialogResult.OK)
+                if (MessageBox.Show("음식 종류를 입력해 주세요.", "error") == DialogResult.OK)
                     textBox4.Focus();
             }
         }
@@ -116,7 +116,10 @@ namespace WindowsFormsApp1
             textBox5.Clear();
         }
 
-       
+        // 삭제시 - 삭제한 데이터가 들어갈 스택
+        private Stack<ListViewItem> deletedStack = new Stack<ListViewItem>(); 
+
+
         private void button3_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("선택하신 항목이 삭제됩니다.\r계속 하시겠습니다?", "항목 삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -125,6 +128,9 @@ namespace WindowsFormsApp1
                 {
                     int index = listView1.FocusedItem.Index;
 
+                    ListViewItem deletedItem = listView1.Items[index].Clone() as ListViewItem;// 
+                    deletedStack.Push(deletedItem); // 삭제한 항목 스텍에 푸쉬 // 수정자 - 박정호
+                   
                     listView1.Items.RemoveAt(index);
 
                     MessageBox.Show("삭제되었습니다.");
@@ -136,7 +142,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        // 삭제한 테이터가 들어간 동적배열 리스트
+        // 검색시 - 삭제한 테이터가 들어간 동적배열 리스트
         private List<ListViewItem> deletedItems = new List<ListViewItem>();
 
 
@@ -194,6 +200,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Form2 _Form = new Form2(this);
             _Form.ShowDialog();
 
@@ -202,5 +209,36 @@ namespace WindowsFormsApp1
         }
     }
     }
+=======
+            this.KeyPreview = true; // KeyPreview 속성을 true로 설정하여 폼에서 키 이벤트를 처리할 수 있도록 함
+            this.KeyDown += new KeyEventHandler(Form1_KeyDown); // KeyDown 이벤트 핸들러 등록
+
+        }
+
+
+        // Ctrl + z 눌러을 때 - 스택에서 푸쉬되었던 데이터가 하나씩 팝하여 되돌리기가 된다.
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Z && e.Handled == false)
+            {
+                e.Handled = true; // 키 이벤트 처리 완료
+
+                if (deletedStack.Count > 0)
+                {
+                    ListViewItem popedItem = deletedStack.Pop();
+                    listView1.Items.Add(popedItem);
+
+                }
+                else
+                {
+                    MessageBox.Show("더 이상 삭제한 항목이 없습니다.");
+                }
+            }
+        }
+
+        
+    }
+}
+>>>>>>> origin/peterho99
 
 
