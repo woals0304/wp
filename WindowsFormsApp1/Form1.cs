@@ -117,7 +117,7 @@ namespace WindowsFormsApp1
         }
 
         // 삭제시 - 삭제한 데이터가 들어갈 스택
-        private Stack<ListViewItem> deletedStack = new Stack<ListViewItem>(); 
+        private Stack<ListViewItem> deletedStack = new Stack<ListViewItem>();
 
 
         private void button3_Click(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace WindowsFormsApp1
 
                     ListViewItem deletedItem = listView1.Items[index].Clone() as ListViewItem;// 
                     deletedStack.Push(deletedItem); // 삭제한 항목 스텍에 푸쉬 // 수정자 - 박정호
-                   
+
                     listView1.Items.RemoveAt(index);
 
                     MessageBox.Show("삭제되었습니다.");
@@ -200,20 +200,20 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+
             Form2 _Form = new Form2(this);
             _Form.ShowDialog();
 
             if (!m_blLoginCheck) this.Close();
-
-        }
-    }
-    }
-=======
             this.KeyPreview = true; // KeyPreview 속성을 true로 설정하여 폼에서 키 이벤트를 처리할 수 있도록 함
             this.KeyDown += new KeyEventHandler(Form1_KeyDown); // KeyDown 이벤트 핸들러 등록
-
         }
+    
+    
+
+            
+
+    
 
 
         // Ctrl + z 눌러을 때 - 스택에서 푸쉬되었던 데이터가 하나씩 팝하여 되돌리기가 된다.
@@ -239,6 +239,4 @@ namespace WindowsFormsApp1
         
     }
 }
->>>>>>> origin/peterho99
-
 
