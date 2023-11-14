@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,9 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        
+        private List<ListViewItem> allItems = new List<ListViewItem>(); // 입력한 정보들을 저장할 백업 리스트 생성 / (11.14)음식 종류 - 오금빈
+
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +36,7 @@ namespace WindowsFormsApp1
 
                 // 가게 이름, 전화번호, 주소, 음식 종류, 메모를 리스트뷰에 추가.
                 listView1.Items.Add(item);
+                allItems.Add((ListViewItem)item.Clone()); // 백업 리스트에도 정보 저장 / (11.14) 음식 종류 - 오금빈
 
                 // 가게 이름, 전화번호, 주소, 음식 종류 텍스트박스 초기화.
                 textBox1.Text = "";
@@ -138,7 +143,8 @@ namespace WindowsFormsApp1
                 }
 
             }
-            string 음식종류 = textBox7.Text;
+            // 삭제해도 되고 안해도 되는 항목 ----------------(11.14)  음식 종류 - 오금빈
+            /*string 음식종류 = comboBox1.Text;   
 
             foreach (ListViewItem 종류 in listView1.Items)
             {
@@ -148,7 +154,7 @@ namespace WindowsFormsApp1
                     listView1.Items.Remove(종류);
                     deletedItems.Add(종류);
                 }
-            }
+            } */
         }
 
         private void 되돌리_Click(object sender, EventArgs e)
@@ -159,7 +165,67 @@ namespace WindowsFormsApp1
             }
             deletedItems.Clear(); // 삭제된 항목을 삭제합니다.
         }
-    }
+
+
+        // 리스트뷰 컬럼 정렬 기능  (11.14) - 오금빈
+        //
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        { 
+            if(listView1.Sorting == SortOrder.Ascending)//오름차순 정렬
+                listView1.Sorting = SortOrder.Descending;//내림차순 정렬
+            else
+                listView1.Sorting = SortOrder.Ascending;
+
+            listView1.ListViewItemSorter = new ListViewItemComparer(e.Column, listView1.Sorting);
+        }
+
+        //비교 정렬을 위한  IComparer 인터페이스
+        public class ListViewItemComparer : IComparer
+        {
+            private int col; // 컬럼 정보
+            private SortOrder order; // (오름,내림)차순 정렬 결정 값 
+
+            public ListViewItemComparer(int column, SortOrder order)
+            {
+                col = column;
+                this.order = order;
+            }
+
+            public int Compare(object x, object y)
+            {
+                int returnVal = -1;
+                returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
+                if (order == SortOrder.Descending)
+                    returnVal *= -1;
+                return returnVal;
+            }
+        }
+
+        // 음식 종류별 정렬(11.14) - 오금빈
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listView1.Items.Clear(); 
+
+            string selected = comboBox1.SelectedItem.ToString(); 
+
+            if (selected != "음식 종류") 
+            {
+                foreach (ListViewItem item in allItems) 
+                {
+                    if (item.SubItems[3].Text == selected) 
+                    {
+                        listView1.Items.Add((ListViewItem)item.Clone()); 
+                    }
+                }
+            }
+            else // '음식 종류'를 선택한 경우
+            {
+                foreach (ListViewItem item in allItems) 
+                {
+                    listView1.Items.Add((ListViewItem)item.Clone()); 
+                }
+            }
+        }
     }
 
-// 브랜치 이름 추가 테스트 입니다 
+}
