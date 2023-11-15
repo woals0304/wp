@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,23 @@ using System.Xml.Linq;
 
 namespace WindowsFormsApp1
 {
+
     public partial class Form1 : Form
     {
-        
-        private List<ListViewItem> allItems = new List<ListViewItem>(); // 입력한 정보들을 저장할 백업 리스트 생성 / (11.14)음식 종류 - 오금빈
+        // 입력한 정보들을 저장할 백업 리스트 생성 /     -   -   -   -   -   -   -   -   -   -   -   -   -   -(11.15)음식 종류 - 오금빈
+        private List<ListViewItem> allItems = new List<ListViewItem>();
+
+        private Boolean m_blLoginCheck = false;
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public Boolean LoginCheck
+        {
+            get { return m_blLoginCheck; }
+            set { m_blLoginCheck = value; }
         }
 
         private void button1_Click(object sender, EventArgs e) // 정보저장 버튼 클릭시 발생하는 이벤트.
@@ -36,7 +46,10 @@ namespace WindowsFormsApp1
 
                 // 가게 이름, 전화번호, 주소, 음식 종류, 메모를 리스트뷰에 추가.
                 listView1.Items.Add(item);
-                allItems.Add((ListViewItem)item.Clone()); // 백업 리스트에도 정보 저장 / (11.14) 음식 종류 - 오금빈
+
+                // 백업 리스트에도 정보 저장 /     -   -   -   -   -   -   -   -   -   -   -   -   (11.15) 음식 종류 - 오금빈
+                allItems.Add((ListViewItem)item.Clone());
+
 
                 // 가게 이름, 전화번호, 주소, 음식 종류 텍스트박스 초기화.
                 textBox1.Text = "";
@@ -46,48 +59,46 @@ namespace WindowsFormsApp1
                 textBox5.Text = "";
             }
             // 가게 이름, 전화번호, 주소, 음식 종류중 미입력 정보가 있으면 메세지박스 띄움.
-            // + 추가할만한 기능 = 메세지박스 확인후 키보드 포커스 설정
+            // 메세지박스 확인후 키보드 포커스 설정
             else if (textBox1.Text == "")
             {
-                MessageBox.Show("가게 이름을 입력해 주세요.");
+                if (MessageBox.Show("가게 이름을 입력해 주세요.", "error") == DialogResult.OK)
+                    textBox1.Focus();
             }
             else if (textBox2.Text == "")
             {
-                MessageBox.Show("전화번호를 입력해 주세요.");
+                if (MessageBox.Show("전화번호를 입력해 주세요.", "error") == DialogResult.OK)
+                    textBox2.Focus();
             }
             else if (textBox3.Text == "")
             {
-                MessageBox.Show("주소를 입력해 주세요.");
+                if (MessageBox.Show("주소를 입력해 주세요.", "error") == DialogResult.OK)
+                    textBox3.Focus();
             }
             else if (textBox4.Text == "")
             {
-                MessageBox.Show("음식 종류를 입력해 주세요.");
+                if (MessageBox.Show("음식 종류를 입력해 주세요.", "error") == DialogResult.OK)
+                    textBox4.Focus();
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            string nameToSearch = textBox1.Text; // 검색할 이름
-            string newName = textBox2.Text; // 새로운 이름
-            string newPhone = textBox3.Text; // 새로운 전화번호
-            string newAddress = textBox4.Text; // 새로운 주소
-            string newType = textBox5.Text; // 새로운 종류
-
-
-            // 예시: ListView에서 검색한 이름과 일치하는 항목을 찾고 수정
-            foreach (ListViewItem item in listView1.Items)
+            if (listView1.SelectedItems.Count == 0)
             {
-                if (item.SubItems[0].Text == nameToSearch)
-                {
-                    item.SubItems[0].Text = newName;
-                    item.SubItems[1].Text = newPhone;
-                    item.SubItems[2].Text = newAddress;
-                    item.SubItems[3].Text = newType;
-                }
+                MessageBox.Show("수정할 항목을 선택해 주세요.");
+                return;
             }
 
+            ListViewItem selectedItem = listView1.SelectedItems[0];
+            selectedItem.SubItems[0].Text = textBox1.Text;
+            selectedItem.SubItems[1].Text = textBox2.Text;
+            selectedItem.SubItems[2].Text = textBox3.Text;
+            selectedItem.SubItems[3].Text = textBox4.Text;
+            selectedItem.SubItems[4].Text = textBox5.Text;
 
-            // 수정이 성공하면 사용자에게 메시지를 표시합니다.
+            // 입력 필드를 지웁니다
+            ClearTextBoxes();
+
             MessageBox.Show("정보가 변경되었습니다.");
         }
 
@@ -95,15 +106,27 @@ namespace WindowsFormsApp1
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                // ListView에서 선택한 항목의 정보를 가져와서 다른 텍스트 상자에 표시
                 ListViewItem selectedItem = listView1.SelectedItems[0];
-                textBox1.Text = selectedItem.SubItems[0].Text; // 가게 이름
-                textBox2.Text = selectedItem.SubItems[1].Text; // 전화번호
-                textBox3.Text = selectedItem.SubItems[2].Text; // 주소
-                textBox4.Text = selectedItem.SubItems[3].Text; // 음식 종류
-                textBox5.Text = selectedItem.SubItems[4].Text; // 메모
+                textBox1.Text = selectedItem.SubItems[0].Text;
+                textBox2.Text = selectedItem.SubItems[1].Text;
+                textBox3.Text = selectedItem.SubItems[2].Text;
+                textBox4.Text = selectedItem.SubItems[3].Text;
+                textBox5.Text = selectedItem.SubItems[4].Text;
             }
         }
+
+        private void ClearTextBoxes()
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+        }
+
+        // 삭제시 - 삭제한 데이터가 들어갈 스택
+        private Stack<ListViewItem> deletedStack = new Stack<ListViewItem>();
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -112,6 +135,9 @@ namespace WindowsFormsApp1
                 if (listView1.SelectedItems.Count > 0)
                 {
                     int index = listView1.FocusedItem.Index;
+
+                    ListViewItem deletedItem = listView1.Items[index].Clone() as ListViewItem;// 
+                    deletedStack.Push(deletedItem); // 삭제한 항목 스텍에 푸쉬 // 수정자 - 박정호
 
                     listView1.Items.RemoveAt(index);
 
@@ -124,7 +150,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        // 삭제한 테이터가 들어간 동적배열 리스트
+        // 검색시 - 삭제한 테이터가 들어간 동적배열 리스트
         private List<ListViewItem> deletedItems = new List<ListViewItem>();
 
 
@@ -143,8 +169,8 @@ namespace WindowsFormsApp1
                 }
 
             }
-            // 삭제해도 되고 안해도 되는 항목 ----------------(11.14)  음식 종류 - 오금빈
-            /*string 음식종류 = comboBox1.Text;   
+            /* 삭제해도 문제 없는 부분 -  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -(11,15) 오금빈
+            string 음식종류 = textBox7.Text;
 
             foreach (ListViewItem 종류 in listView1.Items)
             {
@@ -167,11 +193,63 @@ namespace WindowsFormsApp1
         }
 
 
-        // 리스트뷰 컬럼 정렬 기능  (11.14) - 오금빈
-        //
+        private void listView1_DoubleClick(object sender, EventArgs e) // 하이퍼링크 실험중(가게이름 더블클릭)
+        {
+            foreach (ListViewItem item in listView1.SelectedItems)
+            {
+                ListViewItem.ListViewSubItemCollection subItem = item.SubItems; // 리스트뷰 가게이름 가져오기
+
+                // 메세지박스 YES == 네이버에 해당 가게이름 검색
+                if (MessageBox.Show("'" + subItem[0].Text + "'" + " 네이버에 검색", subItem[0].Text + " 링크", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Process.Start("https://map.naver.com/p/search/" + subItem[0].Text);
+                }
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            Form2 _Form = new Form2(this);
+            _Form.ShowDialog();
+
+            if (!m_blLoginCheck) this.Close();
+            this.KeyPreview = true; // KeyPreview 속성을 true로 설정하여 폼에서 키 이벤트를 처리할 수 있도록 함
+            this.KeyDown += new KeyEventHandler(Form1_KeyDown); // KeyDown 이벤트 핸들러 등록
+        }
+
+
+
+
+
+
+
+
+        // Ctrl + z 눌러을 때 - 스택에서 푸쉬되었던 데이터가 하나씩 팝하여 되돌리기가 된다.
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Z && e.Handled == false)
+            {
+                e.Handled = true; // 키 이벤트 처리 완료
+
+                if (deletedStack.Count > 0)
+                {
+                    ListViewItem popedItem = deletedStack.Pop();
+                    listView1.Items.Add(popedItem);
+
+                }
+                else
+                {
+                    MessageBox.Show("더 이상 삭제한 항목이 없습니다.");
+                }
+            }
+        }
+
+
+        // 리스트뷰 컬럼 정렬 기능     -  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    (11.15) - 오금빈
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
-        { 
-            if(listView1.Sorting == SortOrder.Ascending)//오름차순 정렬
+        {
+            if (listView1.Sorting == SortOrder.Ascending)//오름차순 정렬
                 listView1.Sorting = SortOrder.Descending;//내림차순 정렬
             else
                 listView1.Sorting = SortOrder.Ascending;
@@ -190,7 +268,6 @@ namespace WindowsFormsApp1
                 col = column;
                 this.order = order;
             }
-
             public int Compare(object x, object y)
             {
                 int returnVal = -1;
@@ -201,31 +278,30 @@ namespace WindowsFormsApp1
             }
         }
 
-        // 음식 종류별 정렬(11.14) - 오금빈
+        // 음식 종류별 정렬    -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   (11.15) - 오금빈
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listView1.Items.Clear(); 
+            listView1.Items.Clear();
 
-            string selected = comboBox1.SelectedItem.ToString(); 
+            string selected = comboBox1.SelectedItem.ToString();
 
-            if (selected != "음식 종류") 
+            if (selected != "음식 종류")
             {
-                foreach (ListViewItem item in allItems) 
+                foreach (ListViewItem item in allItems)
                 {
-                    if (item.SubItems[3].Text == selected) 
+                    if (item.SubItems[3].Text == selected)
                     {
-                        listView1.Items.Add((ListViewItem)item.Clone()); 
+                        listView1.Items.Add((ListViewItem)item.Clone());
                     }
                 }
             }
             else // '음식 종류'를 선택한 경우
             {
-                foreach (ListViewItem item in allItems) 
+                foreach (ListViewItem item in allItems)
                 {
-                    listView1.Items.Add((ListViewItem)item.Clone()); 
+                    listView1.Items.Add((ListViewItem)item.Clone());
                 }
             }
         }
     }
-
 }
