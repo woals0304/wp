@@ -165,18 +165,22 @@ namespace WindowsFormsApp1
 
                 if (subItem[0].Text == 이름)
                 {
-                    if (MessageBox.Show("가게이름\t전화번호\t주소\t종류\t메모\n" +
-                        subItem[0].Text + "\t" + subItem[1].Text + "\t" + subItem[2].Text + "\t" + subItem[3].Text + "\t" + subItem[4].Text + "\n" +
-                        "네이버에 검색하시겠습니까?",
+                    if (MessageBox.Show("가게이름\n" + subItem[0].Text +
+                        "\n\n전화번호\n" + subItem[1].Text +
+                        "\n\n주소\n" + subItem[2].Text +
+                        "\n\n종류\n" + subItem[3].Text +
+                        "\n\n메모\n" + subItem[4].Text +
+                        "\n\n네이버에 검색하시겠습니까?",
                         subItem[0].Text + " 검색 결과", MessageBoxButtons.YesNo) == DialogResult.Yes) // 메세지박스 YES == 네이버에 해당 가게이름 검색
                     {
-                        Process.Start("https://map.naver.com/p/search/" + subItem[0].Text);
+                        Process.Start("https://map.naver.com/p/search/" + subItem[0].Text); // 검색한 가게 네이버 지도로 검색
+                        textBox6.Clear(); // 텍스트박스6 비우기
                     }
                 }
                 else
                 {
-                    if(MessageBox.Show("검색 결과가 없습니다.", "오류")==DialogResult.OK)
-                        textBox6.Focus();
+                    if(MessageBox.Show("검색 결과가 없습니다.", "오류")==DialogResult.OK) // 검색한 내용 없으면 출력
+                        textBox6.Focus(); // 검색 텍스트박스에 포커스
                 }
             }
 
@@ -188,20 +192,7 @@ namespace WindowsFormsApp1
                     listView1.Items.Remove(가게이름);
                     deletedItems.Add(가게이름);
                 }
-
             }
-            /* 삭제해도 문제 없는 부분 -  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -(11,15) 오금빈
-            string 음식종류 = textBox7.Text;
-
-            foreach (ListViewItem 종류 in listView1.Items)
-            {
-
-                if (!종류.SubItems[3].Text.Contains(음식종류))
-                {
-                    listView1.Items.Remove(종류);
-                    deletedItems.Add(종류);
-                }
-            } */
         }
 
         private void 되돌리_Click(object sender, EventArgs e)
